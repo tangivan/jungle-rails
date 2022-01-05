@@ -3,7 +3,9 @@
   <header class="page-header">
     <h1>My Cart</h1>
   </header>
-
+  <% if enhanced_cart.empty? %>
+  <div>Your cart is currently empty, continue shopping <%= link_to 'here.', :root %></div>
+<% else %>
   <div class="panel panel-default items">
     <table class="table table-bordered">
       <thead>
@@ -22,7 +24,7 @@
       <tfoot>
         <tr>
           <th colspan="4">
-            TOTAL:
+            TOTAL: 
           </th>
           <th>
             $<%= number_with_precision(cart_subtotal_cents / 100.0, :precision => 2, :delimiter => ',') %>
@@ -48,5 +50,5 @@
       <% end %>
     </div>
   </div>
-
+  <% end %>
 </section>
