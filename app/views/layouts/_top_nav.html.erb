@@ -32,7 +32,6 @@
       <ul class="nav navbar-nav navbar-right">
        <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-
             <span class="text-danger"><%= fa_icon 'lock', text: 'Admin' %></span>
             <span class="caret"></span>
           </a>
@@ -47,7 +46,31 @@
             <%= fa_icon "shopping-cart" %> My Cart (<%= cart.size %>)
           <% end %>
         </li>
-      </ul>
+      <% if current_user %>
+         <li>
+          <a><%= fa_icon "user" %> <%= current_user.name %></a>
+         </li>
+        <li>
+          <%= link_to '/logout' do %>
+            <%= fa_icon "sign-out" %> 
+            Log out
+          <% end %>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to '/login' do %>
+            <%= fa_icon "sign-in" %> 
+            Log in
+          <% end %>
+        </li>
+      <li>
+        <%= link_to '/signup' do %>
+          <%= fa_icon "user-plus" %> 
+          Sign up
+        <% end %>
+      </li>
+    <% end %>
+    </ul>
     </div>
   </div>
 </nav>
